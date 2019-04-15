@@ -1,0 +1,106 @@
+
+--- [1] ---
+cd "C:\Python36-32\Lib\site-packages\django\bin>"
+
+--- [2] ---
+C:\Python36-32\Lib\site-packages\django\bin>python.exe django-admin.py startproject boardgames
+
+--- [3] ---
+python manage.py runserver
+
+-> apare mesaj migrari
+
+
+--- [4] ---
+define New Project in Pycharm; from files already inside folder
+
+
+--- [5] ---
+-> creez aplicatia cu numele main (apare folder cu numele main):
+python manage.py startapp main
+-> adaug aplicatia main la INSTALLED_APPs din fisier: 
+boardgames/settings.py 
+
+
+--- [5] ---
+python manage.py migrate
+
+--- [6] ---
+Django admin, ne asiguram ca in boardgames\settings.py "admin" module este enable (nu este comentat)
+Apoi poate fi accessat in web utilizand http://localhost:8000/admin/ ; dupa ce am pornit server-ul
+
+
+--- [8] ---
+-> creez cont admin:
+
+C:\Python36-32\Lib\site-packages\django\bin\boardgames>python manage.py createsuperuser --username=razvan --email=razvan1.gavriliu@gmail.com
+
+--- [9] ---
+-> ma loghez ca admin:
+
+python manage.py runserver
+http://127.0.0.1:8000/admin/login/?next=/admin/
+
+username:
+password:
+
+--- [10] ---
+-> adaug in "main/views.py" functia >>home<<
+
+--- [11] ---
+Acum in "boardgames/url.py" modificam urmatoarele:
+	from django.contrib import admin
+	from django.urls import path, include
+	path('main/', include('main.urls')),
+
+--- [12] ---
+-> In main creez: urls.py
+
+-> adaug in fisierul creat:
+	from django.contrib import admin
+	from django.urls import path, include
+	from django.conf.urls import url
+	from . import views
+
+
+
+	urlpatterns = [
+  	  path('admin/', admin.site.urls),
+ 	   path('', views.home, name="home"),
+	]
+
+
+----------------------- MODEL: CLASS PERSON ---------------------------------
+--- makemigration ---
+
+C:\Python36-32\Lib\site-packages\django\bin\boardgames>python manage.py makemigrations
+
+--- apoi migrate (pentru a aplica migragrea pe toate bazele de date)---
+
+
+
+--------------------------------------------------------------------------
+http://127.0.0.1:8000/main/formular
+http://127.0.0.1:8000/main/formular_submit/
+
+
+------------------------------------------------- UPLOAD PROJECT ON GITHUB ----------------------------------------
+
+--- [1] ---
+-> RUN IN COMMAND PROMPT: (boardgames admin user):
+
+C:\Python36-32\Lib\site-packages\django\bin\boardgames>git config --global user.name "razvan"
+
+--- [2] ---
+C:\Python36-32\Lib\site-packages\django\bin\boardgames>git config --global user.email razvan1.gavriliu@gmail.com
+
+--- [3] ---
+Pycharm MENU -> VCS -> Import into Version Control -> Share Project on GitHub
+
+
+
+
+
+
+
+
