@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+Table Django <br><br>
+
+<table>
+    <th>Name</th><th>Phone Number</th><th>Email</th>
+    {% for person in persons %}
+    <tr><td>{{person.nume}} </td><td>{{person.phonenumber}}</td><td>{{person.mail}}</td>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
