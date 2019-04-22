@@ -45,6 +45,18 @@ def person(request):
 
 def persons(request):
     if request.method == 'GET':
-        persons = Person.objects.all()
+        persons_obj = Person.objects.all()
 
-    return render(request, 'main/persons.html', {'persons': persons})
+    return render(request, 'main/persons.html', {'persons': persons_obj})
+
+
+def deleteperson(request, id):
+    print(id)
+    print(Person.objects.all())
+    Person.objects.all().filter(pk=int(id)).delete()
+    print(Person.objects.all())
+    persons_obj = Person.objects.all()
+    return render(request, 'main/persons.html', {'persons': persons_obj})
+
+
+

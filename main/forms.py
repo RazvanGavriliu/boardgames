@@ -7,7 +7,3 @@ class PersonForm(forms.Form):
 
 
 
-class PersonsForm(forms.Form):
-    nume = forms.CharField()
-    email = forms.EmailField(required=False)
-    phonenumber = forms.IntegerField()
